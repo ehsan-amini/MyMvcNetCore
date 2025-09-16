@@ -11,7 +11,8 @@ using MyMvcNetCore.DataLayer.Repository;
 using MyMvcNetCore.DataLayer.Repository.IRepository;
 using MyMvcNetCore.Entities.Identity;
 using MyMvcNetCore.Services;
-
+using MyMvcNetCore.Services.EFContracts;
+using MyMvcNetCore.Services.EFServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

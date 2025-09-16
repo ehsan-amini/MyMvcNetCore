@@ -2,7 +2,7 @@
 using MyMvcNetCore.Entities;
 using MyMvcNetCore.ViewModels.Categories;
 
-namespace MyMvcNetCore .Services;
+namespace MyMvcNetCore.Services.EFContracts;
 
 public interface ICategoryService
 {

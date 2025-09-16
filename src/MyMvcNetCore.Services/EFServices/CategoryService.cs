@@ -2,9 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using MyMvcNetCore.DataLayer.Repository.IRepository;
 using MyMvcNetCore.Entities;
+using MyMvcNetCore.Services.EFContracts;
 using MyMvcNetCore.ViewModels.Categories;
 
-namespace MyMvcNetCore.Services;
+namespace MyMvcNetCore.Services.EFServices;
 
 public class CategoryService : ICategoryService
 {

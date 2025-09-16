@@ -18,9 +18,4 @@
     <ProjectReference Include="..\MyMvcNetCore.ViewModels\MyMvcNetCore.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EFServices\" />
-    <Folder Include="EFContracts\" />
-  </ItemGroup>
-
 </Project>
