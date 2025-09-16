@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+           /*  direction: rtl; */
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            border-left: 1px solid #ddd;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+            .sidebar a {
+                display: block;
+                padding: 10px 15px;
+                color: #333;
+                text-decoration: none;
+                border-radius: 6px;
+            }
+
+                .sidebar a:hover {
+                    background: #0d6efd;
+                    color: #fff;
+                }
+
+        .content {
+            padding: 20px;
+        }
+
+  /*       @@media (max-width: 767.98px) {
+            .sidebar
+
+        {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            height: 100vh;
+            width: 250px;
+            z-index: 1050;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease-in-out;
+        }
+
+        .sidebar.show {
+            right: 0;
+        }
+
+        .content {
+            margin-right: 0;
+            padding: 20px;
+        } */
+
+
+            @@media (max-width: 767.98px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                /* تغییر از right به left */
+                left: -250px; 
+                height: 100vh;
+                width: 250px;
+                z-index: 1050;
+                /* تغییر جهت سایه برای نمایش از چپ */
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); 
+                /* تغییر transition به left */
+                transition: left 0.3s ease-in-out;
+            }
+
+            .sidebar.show {
+                /* تغییر از right به left */
+                left: 0; 
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <button class="btn btn-dark d-md-none me-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="bi bi-list"></span>
+            </button>
+            <a class="navbar-brand" href="#">Ehsan Online Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Notifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="collapse d-md-block col-md-3 col-lg-2 sidebar p-3" id="sidebarCollapse">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="text-center">Menu</h5>
+                    <button id="close-sidebar" class="btn-close d-md-none" type="button" aria-label="Close"></button>
+                </div>
+                <a href="#">Dashboard</a>
+                <a href="#">Users</a>
+                <a href="#">Roles</a>
+                <a href="#">Products</a>
+                <a href="/Admin/Category/">Categories</a>
+                <a href="#">Orders</a>
+                <a href="#">Carts</a>
+                <a href="#">Reports</a>
+                <a href="#">Settings</a>
+            </div>
+
+            <div class="col-12 col-md-9 col-lg-10 content">
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-0">
+        <p class="mb-0">&copy;2025 MyShop Admin Panel | Built Ehsan M.Amini</p>
+    </footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<partial name="_ValidationScriptsPartial" />
+@await RenderSectionAsync("Scripts", required: false)
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const closeBtn = document.getElementById('close-sidebar');
+            const sidebar = document.getElementById('sidebarCollapse');
+
+            if (closeBtn && sidebar) {
+                closeBtn.addEventListener('click', function() {
+                    sidebar.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
