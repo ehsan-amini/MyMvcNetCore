@@ -39,7 +39,7 @@ namespace MyMvcNetCore.DataLayer.DbInitializer
                 {
                     UserName = "main",
                     Email = "ehsan.mamini@gmail.com",
-                    PhoneNumber = "09112535330",
+                    PhoneNumber = "0049176000000",
                     FirstName= "Ehsan",
                     LastName="Amini",
                     IsActive =true,
