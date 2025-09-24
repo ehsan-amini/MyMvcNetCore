@@ -7,6 +7,7 @@ This solution is built around key architectural principles that promote a clean,
 •	Repository Pattern: This pattern provides a clear abstraction layer over data access. It allows the business logic to interact with data using a common set of methods (like GetAll or GetById) without needing to know the specifics of the underlying database technology.
 •	Unit of Work: This ensures that multiple data operations within a single business task are treated as an atomic transaction. All changes are either committed together or rolled back completely if any part of the operation fails, guaranteeing data integrity.
 •	Dependency Injection: By using .NET Core's built-in dependency injection, the project promotes loose coupling. Services and repositories are injected as interfaces, making the code more modular and significantly easier to unit test.
+•	Authentication: The application uses ASP.NET Core Identity for robust user authentication and authorization, providing a secure foundation for managing user accounts.
 ________________________________________
 Project Structure
 The solution is organized into several logical projects (layers), each with a specific role.
@@ -21,4 +22,6 @@ o	UnitOfWork: Implements the IUnitOfWork interface to coordinate repositories an
 •	MyMvcNetCore.Web: This is the presentation layer.
 o	Controllers: Handle incoming HTTP requests and coordinate with the services layer.
 o	Views: Provide the user interface, displaying data from the ViewModels.
-
+________________________________________
+Development Status
+The data layer and entity layer are fully implemented. The remaining parts of the application are designed for extensibility and are currently under active development.
