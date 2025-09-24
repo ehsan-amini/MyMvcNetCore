@@ -1,0 +1,17 @@
+
+In Solution Path=>>>cmd
+----------------1----------------
+dotnet tool install --global dotnet-ef
+
+dotnet tool update --global dotnet-ef
+
+dotnet ef --version
+
+-----------------2----------------
+dotnet ef migrations add Date_24_09_2025_Time_21_50_00 --project src\MyMvcNetCore.DataLayer --startup-project src\MyMvcNetCore.Web --verbose
+pause
+
+-----------------3----------------
+dotnet ef database update --project src\MyMvcNetCore.DataLayer --startup-project src\MyMvcNetCore.Web --verbose
+pause
+

@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<MyMvcNetCore.ViewModels.Categories.ShowCategory>
+
+
+<div class="search-bar-top">
+    <div class="search-bar">
+        <select>
+            <option selected="selected">All Category</option>
+            @foreach (var category in Model)
+            {
+                <option>@category.Title</option>
+                
+            }
+       
+        </select>
+        <form>
+            <input name="search" placeholder="Search Products Here....." type="search">
+            <button class="btnn"><i class="ti-search"></i></button>
+        </form>
+    </div>
+</div>

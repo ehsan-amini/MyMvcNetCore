@@ -1,0 +1,44 @@
+﻿@page
+@model LogoutModel
+@{
+
+    ViewData["Title"] = "Log out";
+}
+
+
+<div class="col-lg-12 col-12">
+    <div class="form-main">
+ 
+        @*   <h1>@ViewData["Title"]</h1> *@
+        @{
+            if (User.Identity?.IsAuthenticated ?? false)
+            {   <div class="title">
+
+                    <h4>Log Out</h4>
+                    <h3>Are you sure you want to log out?</h3>
+                </div>
+                <form class="form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+
+              
+                
+                    <div class="col-12">
+                        <div class="form-group button">
+                            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                            <button type="submit" class="btn " asp-page-handler="logOut">Yes, Log Out</button>
+                            <button type="submit" class="btn " asp-page-handler="Cancel" asp-route-returnUrl="@ViewData["ReturnUrl"]">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <p>You have successfully logged out of the application.</p>
+            }
+        }
+
+    </div>
+</div>
+
+                        
+                            
+                            

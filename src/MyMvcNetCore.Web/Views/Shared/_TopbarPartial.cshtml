@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using MyMvcNetCore.Commen
+@using MyMvcNetCore.Entities.Identity
+
+@inject SignInManager<ApplicationUser > SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+<div class="topbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-12">
+                <!-- Top Left -->
+                <div class="top-left">
+                    <ul class="list-main">
+                        <li><i class="ti-headphone-alt"></i> +49 801</li>
+                        <li><i class="ti-email"></i> support@your_compony.com</li>
+                    </ul>
+                </div>
+                <!--/ End Top Left -->
+            </div>
+            <div class="col-lg-8 col-md-12 col-12">
+                <!-- Top Right -->
+                <div class="right-content">
+                    <ul class="list-main">
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                        @*     <li><i class="ti-location-pin"></i> Store location</li>
+                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+                            <li><i class="ti-user"></i> <a href="#">My account</a></li> *@
+                            <li>
+                                @*   <a id="manage"  asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a> *@
+                                @if (User.IsInRole(SD.Role_Admin))
+                                {
+                                    <a id="manage" asp-area="Admin" asp-action="Index" asp-controller="Dashboard" >Hello @UserManager.GetUserName(User)!</a>
+
+                                }else if (User.IsInRole(SD.Role_Customer ))
+                                {
+                                    <a id="manage" asp-area="Customer" asp-action="Index" asp-controller="Dashboard" >Hello @UserManager.GetUserName(User)!</a>
+
+                                }
+                                else if (User.IsInRole(SD.Role_Employee ))
+                                {
+
+
+                                }
+                                else if (User.IsInRole(SD.Role_Company ))
+                                {
+
+
+                                }
+
+
+                            </li>
+                            <li><i class="ti-power-off"></i><a asp-page="/Account/logout" asp-area="Identity" asp-route-returnUrl="@Context.Request.Path" >Logout</a></li>
+                        }
+                        else
+                        {
+
+                            <li><i class="ti-user"></i><a asp-page="/Account/Register" asp-area="Identity">Register</a></li>
+                            <li><i class="ti-lock"></i><a asp-page="/Account/login" asp-area="Identity">Login</a></li>
+                        }
+
+                    </ul>
+                </div>
+                <!-- End Top Right -->
+            </div>
+        </div>
+    </div>
+</div>
